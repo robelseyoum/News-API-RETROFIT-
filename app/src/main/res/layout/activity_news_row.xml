@@ -10,16 +10,32 @@
         app:cardCornerRadius="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="377dp"
-            android:layout_height="317dp">
+            android:layout_width="385dp"
+            android:layout_height="351dp">
+
+        <TextView android:layout_width="283dp"
+                  android:layout_height="32dp"
+                  android:id="@+id/tv_headline"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                  app:layout_constraintHorizontal_bias="0.285"
+                  android:layout_marginTop="8dp"
+                  android:textSize="18sp"
+                  app:layout_constraintTop_toTopOf="parent"
+                  android:text="@string/top_headlines_news"
+                  android:textColor="@color/MainHeaderColor"
+                  android:textStyle="bold"
+                  android:textAlignment="center"
+        />
 
         <TextView android:layout_width="216dp" android:layout_height="24dp"
                   android:text="Title"
+                  android:textColor="@color/HeadlineColor"
                   android:textStyle="bold"
                   app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
                   android:layout_marginStart="8dp"
-                  app:layout_constraintHorizontal_bias="0.156" android:layout_marginBottom="4dp"
-                  app:layout_constraintBottom_toTopOf="@+id/tv_title" android:id="@+id/textView"/>
+                  app:layout_constraintHorizontal_bias="0.124"
+                  app:layout_constraintBottom_toTopOf="@+id/tv_title" android:id="@+id/tv_headline_title"/>
 
 
         <TextView android:layout_width="304dp"
@@ -34,6 +50,8 @@
 
         <TextView android:layout_width="216dp" android:layout_height="24dp"
                   android:text="Author"
+                  android:textColor="@color/HeadlineColor"
+                  android:id="@+id/tv_headline_author"
                   android:textStyle="bold"
                   app:layout_constraintEnd_toEndOf="parent"
                   android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
@@ -52,12 +70,14 @@
 
         <TextView android:layout_width="216dp" android:layout_height="24dp"
                   android:text="Description"
+                  android:id="@+id/tv_headline_desc"
+                  android:textColor="@color/HeadlineColor"
                   android:textStyle="bold"
                   app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                   app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                  app:layout_constraintHorizontal_bias="0.165" android:layout_marginBottom="8dp"
+                  app:layout_constraintHorizontal_bias="0.163"
                   app:layout_constraintBottom_toTopOf="@+id/tv_description"/>
-                />
+        />
 
         <TextView android:layout_width="314dp"
                   android:layout_height="120dp"

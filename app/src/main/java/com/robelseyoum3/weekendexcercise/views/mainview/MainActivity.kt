@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.robelseyoum3.weekendexcercise.R
+import com.robelseyoum3.weekendexcercise.common.setBoldAndColorSpannable
 import com.robelseyoum3.weekendexcercise.views.mainview.fragmentviews.MainFragment
+import kotlinx.android.synthetic.main.activity_news_row.*
 
 
 class MainActivity : AppCompatActivity(){
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity(){
             //  .addToBackStack(null)
             .commit()
     }
+
 
 
 }
