@@ -6,13 +6,7 @@
         android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".views.mainview.fragmentviews.MainFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-    />
+
 
     <ProgressBar
             android:id="@+id/progress_id_main"
@@ -24,6 +18,12 @@
             android:layout_centerInParent="true"
     />
 
-
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
 
 </LinearLayout>

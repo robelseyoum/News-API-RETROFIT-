@@ -7,12 +7,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.robelseyoum3.weekendexcercise.R
 import com.robelseyoum3.weekendexcercise.common.Constants
+import com.robelseyoum3.weekendexcercise.models.Articles
 import com.robelseyoum3.weekendexcercise.models.NewsSource
 import com.robelseyoum3.weekendexcercise.network.NewsRequest
 import com.robelseyoum3.weekendexcercise.network.RetrofitInstances
+import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -54,9 +57,22 @@ class MainFragment : Fragment() {
             override fun onResponse(call: Call<NewsSource>, response: Response<NewsSource>) {
                 val res = response.body()
                 Log.i("Title ", ""+res!!.articles[1].title)
+                getNews(res)
             }
 
         })
+    }
+
+    private fun getNews(newsSource: NewsSource){
+
+        val adapter = NewsAdapter(newsSource, object : onNewsClickListener{
+            override fun newsURLClicked(news: Articles) {
+                Log.d("getNews Attached", news.title)
+            }
+        })
+
+        rvList.layoutManager = LinearLayoutManager(activity?.applicationContext)
+        rvList.adapter = adapter
     }
 
 
