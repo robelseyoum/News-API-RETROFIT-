@@ -38,11 +38,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        retofitCall()
+        makeRetrofitCall()
     }
 
-    private fun retofitCall(){
+    private fun makeRetrofitCall(){
 
         val newsRequest = RetrofitInstances().retrofitInstances.create(NewsRequest::class.java)
         val call = newsRequest.getNews(Constants.COUNTRY, Constants.API_KEY)
