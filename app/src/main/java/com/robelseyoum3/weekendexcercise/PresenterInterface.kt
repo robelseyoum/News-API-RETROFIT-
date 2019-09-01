@@ -1,4 +1,6 @@
 package com.robelseyoum3.weekendexcercise
 
-interface PresenterInterface {
+interface PresenterInterface  {
+    fun getTopNews()
+    fun onDestroy()
 }

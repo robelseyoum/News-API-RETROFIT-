@@ -4,21 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.robelseyoum3.weekendexcercise.R
-import com.robelseyoum3.weekendexcercise.common.Constants
-import com.robelseyoum3.weekendexcercise.models.NewsSource
-import com.robelseyoum3.weekendexcercise.network.NewsRequest
-import com.robelseyoum3.weekendexcercise.network.RetrofitInstances
 import com.robelseyoum3.weekendexcercise.views.mainview.fragmentviews.MainFragment
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         addFragment()
     }
 
@@ -30,7 +23,6 @@ class MainActivity : AppCompatActivity() {
             //  .addToBackStack(null)
             .commit()
     }
-
 
 
 }

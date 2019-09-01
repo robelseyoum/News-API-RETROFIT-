@@ -1,6 +1,8 @@
 package com.robelseyoum3.weekendexcercise.views.mainview.fragmentviews
 
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,13 +10,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.browser.customtabs.CustomTabsIntent
+
 
 import com.robelseyoum3.weekendexcercise.R
+import com.robelseyoum3.weekendexcercise.ViewInterface
 import com.robelseyoum3.weekendexcercise.common.Constants
 import com.robelseyoum3.weekendexcercise.models.Articles
 import com.robelseyoum3.weekendexcercise.models.NewsSource
 import com.robelseyoum3.weekendexcercise.network.NewsRequest
 import com.robelseyoum3.weekendexcercise.network.RetrofitInstances
+import com.robelseyoum3.weekendexcercise.presenter.Presenter
+import com.robelseyoum3.weekendexcercise.views.mainview.MainActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +36,8 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), ViewInterface {
+    private lateinit var presenter: Presenter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,39 +49,38 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        makeRetrofitCall()
+        presenter = Presenter(this)
+        presenter.getTopNews()
+
     }
 
-    private fun makeRetrofitCall(){
+    override fun showLoading() {
+    }
 
-        val newsRequest = RetrofitInstances().retrofitInstances.create(NewsRequest::class.java)
-        val call = newsRequest.getNews(Constants.COUNTRY, Constants.API_KEY)
-        call.enqueue(object : Callback<NewsSource> {
-
-            override fun onFailure(call: Call<NewsSource>, t: Throwable) {
-                Log.d("News Error ", ""+t.message)
-            }
-
-            override fun onResponse(call: Call<NewsSource>, response: Response<NewsSource>) {
-                val res = response.body()
-                Log.i("Title ", ""+res!!.articles[1].title)
-                getNews(res)
-            }
-
-        })
+    override fun showTopNews(news: NewsSource) {
+        getNews(news!!)
     }
 
     private fun getNews(newsSource: NewsSource){
 
-        val adapter = NewsAdapter(newsSource, object : onNewsClickListener{
+        val adapter = NewsAdapter(newsSource, object : onNewsClickListener {
             override fun newsURLClicked(news: Articles) {
-                Log.d("getNews Attached", news.title)
+                Log.d("getNews Attached url ", news.url)
+
+                val builder = CustomTabsIntent.Builder()
+                val customTabsIntent = builder.build()
+                customTabsIntent.launchUrl(activity?.applicationContext, Uri.parse(news.url))
             }
         })
 
         rvList.layoutManager = LinearLayoutManager(activity?.applicationContext)
         rvList.adapter = adapter
+
     }
 
 
+
+
+
 }
+
