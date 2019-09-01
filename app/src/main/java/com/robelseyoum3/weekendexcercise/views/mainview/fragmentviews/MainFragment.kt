@@ -55,10 +55,12 @@ class MainFragment : Fragment(), ViewInterface {
     }
 
     override fun showLoading() {
+        progress_id_main.visibility = View.VISIBLE
     }
 
     override fun showTopNews(news: NewsSource) {
-        getNews(news!!)
+        progress_id_main.visibility = View.GONE
+        getNews(news)
     }
 
     private fun getNews(newsSource: NewsSource){
@@ -69,17 +71,14 @@ class MainFragment : Fragment(), ViewInterface {
 
                 val builder = CustomTabsIntent.Builder()
                 val customTabsIntent = builder.build()
-                customTabsIntent.launchUrl(activity?.applicationContext, Uri.parse(news.url))
+                customTabsIntent.launchUrl(context, Uri.parse(news.url))
+
             }
         })
 
         rvList.layoutManager = LinearLayoutManager(activity?.applicationContext)
         rvList.adapter = adapter
-
     }
-
-
-
 
 
 }

@@ -47,10 +47,7 @@ class Presenter(_view: ViewInterface): PresenterInterface {
         })
     }
 
-
-
-
     override fun onDestroy() {
-
+        view = null
     }
 }
