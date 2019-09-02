@@ -41,7 +41,7 @@ class Presenter(_view: ViewInterface): PresenterInterface {
             override fun onResponse(call: Call<NewsSource>, response: Response<NewsSource>) {
                 val res = response.body()
                 //Log.i("Title ", ""+res!!.articles[1].title)
-                view!!.showTopNews(res!!)
+                view?.showTopNews(res!!)
             }
 
         })

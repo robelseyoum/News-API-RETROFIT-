@@ -76,7 +76,7 @@ class MainFragment : Fragment(), ViewInterface {
 
                 val builder = CustomTabsIntent.Builder()
                 val customTabsIntent = builder.build()
-                //customTabsIntent.launchUrl(activity?.applicationContext, Uri.parse(news.url))
+//                customTabsIntent.launchUrl(activity?.applicationContext, Uri.parse(news.url))
                 customTabsIntent.launchUrl(context, Uri.parse(news.url))
 
             }
