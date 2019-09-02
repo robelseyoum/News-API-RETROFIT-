@@ -86,6 +86,11 @@ class MainFragment : Fragment(), ViewInterface {
         rvList.adapter = adapter
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
 
 }
 
